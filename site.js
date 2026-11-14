@@ -27,11 +27,8 @@ async function lireTextes() {
   }).filter(t => t.texte);
 }
 
-// Les liens de navigation : la page en cours est en noir,
-// et un clic dessus ramène à l'accueil.
+// Le lien de la page en cours est en noir plein
+const page = location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('nav a').forEach(a => {
-  if (location.pathname.endsWith(a.getAttribute('href'))) {
-    a.classList.add('actif');
-    a.href = 'index.html';
-  }
+  if (a.getAttribute('href') === page) a.classList.add('actif');
 });

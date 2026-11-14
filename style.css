@@ -3,41 +3,38 @@
 html, body { background: var(--fond); color: var(--encre); }
 body {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 20px;
+  font-size: 17px;
   line-height: 1.65;
   min-height: 100vh;
 }
 nav {
   display: flex;
-  justify-content: center;
-  gap: 3rem;
-  padding: 2.5rem 1rem 0;
-  font-size: 1rem;
-  letter-spacing: .06em;
+  flex-wrap: wrap;
+  gap: .4rem 2.5rem;
+  padding: 2.5rem 2.5rem 0;
+  font-size: .95rem;
+  letter-spacing: .04em;
 }
 nav a { color: var(--encre); text-decoration: none; opacity: .45; transition: opacity .4s; }
 nav a:hover, nav a.actif { opacity: 1; }
-main { max-width: 34rem; margin: 0 auto; padding: 0 1.5rem 6rem; }
+main { max-width: 34rem; padding: 0 2.5rem 6rem; }
 
 /* Accueil */
-.accueil {
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  text-align: center; min-height: 78vh;
-}
-.phrase { font-style: italic; font-size: 1.6rem; white-space: pre-line; }
+.accueil { padding-top: 9rem; }
+.phrase { font-style: italic; font-size: 1.25rem; white-space: pre-line; }
 button {
-  font: inherit; font-size: 1rem; letter-spacing: .06em;
+  font: inherit; font-size: .95rem; letter-spacing: .04em;
   background: none; border: none; color: var(--encre);
-  cursor: pointer; margin-top: 3rem; opacity: .45; transition: opacity .4s;
+  cursor: pointer; margin-top: 2.5rem; padding: 0; text-align: left; opacity: .45; transition: opacity .4s;
 }
 button:hover { opacity: 1; }
 #emergence { margin-top: 3rem; min-height: 8rem; white-space: pre-line; opacity: 0; transition: opacity 1.2s; }
 #emergence.la { opacity: 1; }
 
 /* Rumeur des agencements */
-.texte { white-space: pre-line; padding: 4.5rem 0 0; }
+.texte { white-space: pre-line; padding: 4rem 0 0; }
 .date { display: block; font-size: .8rem; opacity: .45; margin-top: 1.2rem; }
 
 /* Contact */
-.contact { white-space: pre-line; padding-top: 5rem; }
+.contact { white-space: pre-line; padding-top: 4rem; }
 .contact a { color: var(--encre); }
