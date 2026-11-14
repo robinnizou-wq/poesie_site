@@ -3,36 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rumeur des agencements</title>
+<title>Rumeur des agencements · R. Nizou</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav>
-  <a href="index.html">Robin Nizou</a>
-  <a href="rumeur.html">rumeur des agencements</a>
-  <a href="contact.html">contact</a>
-</nav>
-<main id="rumeur"></main>
+<div class="page">
+<aside>
+  <h1 class="nom"><a href="index.html">R. Nizou</a></h1>
+  <nav aria-label="Navigation principale">
+    <a href="index.html">Accueil</a>
+    <a href="rumeur.html">Rumeur des agencements</a>
+    <a href="actualites.html">Actualités</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</aside>
+<main>
+<div class="colonne">
+  <div id="liste"></div>
+</div>
+</main>
+</div>
 <script src="site.js"></script>
-<script>
-  lireTextes().then(textes => {
-    const main = document.getElementById('rumeur');
-    textes.forEach(t => {
-      const div = document.createElement('div');
-      div.className = 'texte';
-      div.textContent = t.texte;
-      if (t.date) {
-        const d = document.createElement('span');
-        d.className = 'date';
-        d.textContent = t.date;
-        div.appendChild(d);
-      }
-      main.appendChild(div);
-    });
-  });
-</script>
+<script>lireTextes('textes.txt').then(t => afficherListe(t, document.getElementById('liste')));</script>
 </body>
 </html>

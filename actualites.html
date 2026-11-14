@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Actualités · R. Nizou</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+<aside>
+  <h1 class="nom"><a href="index.html">R. Nizou</a></h1>
+  <nav aria-label="Navigation principale">
+    <a href="index.html">Accueil</a>
+    <a href="rumeur.html">Rumeur des agencements</a>
+    <a href="actualites.html">Actualités</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</aside>
+<main>
+<div class="colonne">
+  <div id="liste"></div>
+</div>
+</main>
+</div>
+<script src="site.js"></script>
+<script>lireTextes('actualites.txt').then(t => afficherListe(t, document.getElementById('liste')));</script>
+</body>
+</html>

@@ -3,27 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rumeur des agencements</title>
+<title>R. Nizou</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav>
-  <a href="index.html">Robin Nizou</a>
-  <a href="rumeur.html">rumeur des agencements</a>
-  <a href="contact.html">contact</a>
-</nav>
-<main class="accueil">
+<div class="page">
+<aside>
+  <h1 class="nom"><a href="index.html">R. Nizou</a></h1>
+  <nav aria-label="Navigation principale">
+    <a href="index.html">Accueil</a>
+    <a href="rumeur.html">Rumeur des agencements</a>
+    <a href="actualites.html">Actualités</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</aside>
+<main>
+<div class="colonne">
   <p class="phrase" id="phrase"></p>
   <button type="button" id="bouton">faire émerger</button>
-  <div id="emergence"></div>
+  <div id="emergence" aria-live="polite"></div>
+</div>
 </main>
+</div>
 <script src="site.js"></script>
 <script>
   lire('phrase.txt').then(p => document.getElementById('phrase').textContent = p.trim());
 
+  const phrase = document.getElementById('phrase');
   const zone = document.getElementById('emergence');
   let textes = [], dernier = -1;
   lireTextes().then(t => textes = t);
@@ -33,12 +42,20 @@
     let i;
     do { i = Math.floor(Math.random() * textes.length); }
     while (textes.length > 1 && i === dernier);
+    const premier = dernier === -1;
     dernier = i;
+    phrase.classList.add('cachee');
     zone.classList.remove('la');
     setTimeout(() => {
       zone.textContent = textes[i].texte;
+      if (textes[i].date) {
+        const d = document.createElement('span');
+        d.className = 'date';
+        d.textContent = textes[i].date;
+        zone.appendChild(d);
+      }
       zone.classList.add('la');
-    }, zone.textContent ? 700 : 0);
+    }, premier ? 0 : 700);
   });
 </script>
 </body>

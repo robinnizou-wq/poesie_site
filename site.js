@@ -4,10 +4,10 @@ async function lire(fichier) {
   return r.ok ? r.text() : '';
 }
 
-// Découpe textes.txt : un texte par bloc, blocs séparés par une ligne "---".
+// Découpe un fichier de textes : blocs séparés par une ligne "---".
 // Une première ligne commençant par "@" est la date (facultative).
-async function lireTextes() {
-  const brut = await lire('textes.txt');
+async function lireTextes(fichier = 'textes.txt') {
+  const brut = await lire(fichier);
   const blocs = [];
   let courant = [];
   for (const ligne of brut.split(/\r?\n/)) {
@@ -27,8 +27,27 @@ async function lireTextes() {
   }).filter(t => t.texte);
 }
 
-// Le lien de la page en cours est en noir plein
-const page = location.pathname.split('/').pop() || 'index.html';
+// Affiche une liste de textes dans un élément
+function afficherListe(textes, conteneur) {
+  textes.forEach(t => {
+    const div = document.createElement('div');
+    div.className = 'texte';
+    div.textContent = t.texte;
+    if (t.date) {
+      const d = document.createElement('span');
+      d.className = 'date';
+      d.textContent = t.date;
+      div.appendChild(d);
+    }
+    conteneur.appendChild(div);
+  });
+}
+
+// Le lien de la page en cours est en noir
+const pageCourante = location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('nav a').forEach(a => {
-  if (a.getAttribute('href') === page) a.classList.add('actif');
+  if (a.getAttribute('href') === pageCourante) {
+    a.classList.add('actif');
+    a.setAttribute('aria-current', 'page');
+  }
 });
