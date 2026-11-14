@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rumeur des agencements</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a href="rumeur.html">rumeur des agencements</a>
+  <a href="contact.html">contact</a>
+</nav>
+<main class="accueil">
+  <p class="phrase" id="phrase"></p>
+  <button type="button" id="bouton">faire émerger</button>
+  <div id="emergence"></div>
+</main>
+<script src="site.js"></script>
+<script>
+  lire('phrase.txt').then(p => document.getElementById('phrase').textContent = p.trim());
+
+  const zone = document.getElementById('emergence');
+  let textes = [], dernier = -1;
+  lireTextes().then(t => textes = t);
+
+  document.getElementById('bouton').addEventListener('click', () => {
+    if (!textes.length) return;
+    let i;
+    do { i = Math.floor(Math.random() * textes.length); }
+    while (textes.length > 1 && i === dernier);
+    dernier = i;
+    zone.classList.remove('la');
+    setTimeout(() => {
+      zone.textContent = textes[i].texte;
+      zone.classList.add('la');
+    }, zone.textContent ? 700 : 0);
+  });
+</script>
+</body>
+</html>

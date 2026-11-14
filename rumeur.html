@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rumeur des agencements</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a href="rumeur.html">rumeur des agencements</a>
+  <a href="contact.html">contact</a>
+</nav>
+<main id="rumeur"></main>
+<script src="site.js"></script>
+<script>
+  lireTextes().then(textes => {
+    const main = document.getElementById('rumeur');
+    textes.forEach(t => {
+      const div = document.createElement('div');
+      div.className = 'texte';
+      div.textContent = t.texte;
+      if (t.date) {
+        const d = document.createElement('span');
+        d.className = 'date';
+        d.textContent = t.date;
+        div.appendChild(d);
+      }
+      main.appendChild(div);
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+@ novembre 2026
+Le plus récent tout en haut.
+Les retours à la ligne
+restent tels quels.
+
+Même les lignes vides.
+---
+Un texte sans date.
+---
+@ octobre 2026
+Le plus ancien tout en bas.
